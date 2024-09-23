@@ -89,7 +89,7 @@ if category != 'Select a Category':
                 profit_margin = 0
 
             # Calculate delta
-            delta = profit_margin - overall_average_profit_margin
+            delta = profit_margin - overall_profit_margin
 
             #Display values
             st.subheader(f"Metrics for {each_subcategory}")
