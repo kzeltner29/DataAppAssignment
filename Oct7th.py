@@ -79,7 +79,6 @@ if category != 'Select a Category':
                 profit_margin = 0
 
             #Display values
-            st.subheader(f"Metrics for {each_subcategory}")
             col1, col2, col3 = st.columns(4)
             col1.metric("Total Sales", f"${total_sales:,.2f}")
             col2.metric("Total Profit", f"${total_profit:,.2f}")
