@@ -53,7 +53,7 @@ if subcategory:
     filtered_df = df[df['Sub_Category'].isin(subcategory)]
     
     # Group by month and sum the sales for each subcategory
-    selected_sales = filtered_df.set_index('Order_Date').groupby([pd.Grouper(freq='M'), 'Sub_Category'])['Sales'].sum().unstack()
+    selected_sales = filtered_df.groupby([pd.Grouper(freq='M'), 'Sub_Category'])['Sales'].sum().unstack()
     
     # Show a line chart for the selected subcategories
     st.write(f"Line chart for {', '.join(filtered_df)}")
