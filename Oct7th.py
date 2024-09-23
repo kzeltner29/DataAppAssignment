@@ -77,7 +77,7 @@ if category != 'Select a Category':
                 profit_margin = (total_profit / total_sales) *100
             else: 
                 profit_margin = 0
-             col1, col2, col3 = st.columns(3)
+            col1, col2, col3 = st.columns(3)
             col1.metric("Total Sales", total_sales)
             col2.metric("Total Profit", total_profit)
             col3.metric("Overall Profit Margin", profit_margin)
