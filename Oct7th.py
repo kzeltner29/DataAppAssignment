@@ -64,17 +64,23 @@ if category != 'Select a Category':
 # For the selected subcategories show total sales, total profit, overall profit margin
 if category != 'Select a Category':
     if subcategory:
-        total_sales = filtered_df['Sales'].sum()
-        total_profit = filtered_df['Profit'].sum()
-        if total_sales > 0:
-            profit_margin = (total_profit / total_sales) * 100
-        else:
-            profit_margin = 0
-        col1, col2, col3 = st.columns(3)
-        col1.metric("Total Sales", f"${total_sales:,.2f}")
-        col2.metric("Total Profit", f"${total_profit:,.2f}")
-        col3.metric("Overall Profit Margin", f"{profit_margin:.2f}%")
+        for each_subcategory in subcategory:
+            # Filter data for each subcategory
+            subcategory_df = filtered_df[filtered_df['Sub_Category'] == subcategory]
+            
+            #Calculate Total Sales, Total Profit for subcategory
+            total_sales = subcategory_df['Sales'].sum()
+            total_profit = subcategory_df['Profit'].sum()
 
+            # Calculate Profit Margin
+            if total_sales > 0:
+                profit_margin = (total_profit / total_sales) *100
+            else: 
+                profit_margin = 0
+             col1, col2, col3 = st.columns(3)
+            col1.metric("Total Sales", total_sales)
+            col2.metric("Total Profit", total_profit)
+            col3.metric("Overall Profit Margin", profit_margin)
 
 st.write("## Your additions")
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
