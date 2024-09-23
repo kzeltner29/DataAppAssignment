@@ -42,9 +42,8 @@ st.write("You selected:", option)
 
 
 options = st.multiselect(
-    "What are your favorite colors",
+    "What sub-categories are you interested in?",
     ["Green", "Yellow", "Red", "Blue"],
-    ["Yellow", "Red"],
 )
 
 st.write("You selected:", options)
