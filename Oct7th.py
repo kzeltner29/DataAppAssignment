@@ -30,22 +30,20 @@ st.dataframe(sales_by_month)
 # Here the grouped months are the index and automatically used for the x axis
 st.line_chart(sales_by_month, y="Sales")
 
-# Add a drop down for category
-option = st.selectbox(
-    "What category would you like to see?",
-    ("Furniture", "Office Supplies", "Technology"),
-    index=None,
-    placeholder="Select category...",
-)
 
-st.write("You selected:", option)
+# Categories and their respective sub-categories
+Categories = {
+    'Furniture' : ['Bookcases', 'Chairs', 'Furnishings', 'Tables'],
+    'Office Supplies' : ['Applicanes', 'Art', 'Binders', 'Envelopes', 'Fasteners', 'Labels', 'Paper', 'Storage', 'Supplies'],
+    'Technology' : ['Accessories', 'Copiers', 'Machines', 'Phones']
+}
 
+category = st.selectbox('Which category are you interested in?', list(Categories.keys()))
 
-options = st.multiselect(
-    "What sub-categories are you interested in?",
-    ["Accessories", "Appliances", "Art", "Binders", "Bookcases", "Chairs", "Copiers", "Envelopes", "Fasteners"
-    "Furnishings", "Labels", "Machines", "Paper", "Phones", "Storage", "Supplies", "Tables"],
-)
+if category:
+    subcategory = st.multiselect('Which sub-category are you interested in?:', Categories[category])
+     # Show selected options
+    st.write(f'You selected {category} with sub-categories: {subcategory}')
 
 
 st.write("## Your additions")
