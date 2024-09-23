@@ -66,7 +66,7 @@ if category != 'Select a Category':
     if subcategory:
         for each_subcategory in subcategory:
             # Filter data for each subcategory
-            subcategory_df = filtered_df[filtered_df['Sub_Category'] == subcategory]
+            subcategory_df = filtered_df[filtered_df['Sub_Category'] == each_subcategory]
             
             #Calculate Total Sales, Total Profit for subcategory
             total_sales = subcategory_df['Sales'].sum()
