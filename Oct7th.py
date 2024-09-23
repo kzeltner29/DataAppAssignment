@@ -43,10 +43,10 @@ st.write("You selected:", option)
 
 options = st.multiselect(
     "What sub-categories are you interested in?",
-    ["Green", "Yellow", "Red", "Blue"],
+    ["Accessories", "Appliances", "Art", "Binders", "Bookcases", "Chairs", "Copiers", "Envelopes", "Fasteners"
+    "Furnishings", "Labels", "Machines", "Paper", "Phones", "Storage", "Supplies", "Tables"],
 )
 
-st.write("You selected:", options)
 
 st.write("## Your additions")
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
