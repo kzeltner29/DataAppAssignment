@@ -59,7 +59,7 @@ if category != 'Select a Category':
     
         # Show a line chart for the selected subcategories
         st.write(f"Sales of {', '.join(subcategory)} over time")
-        st.line_chart(selected_sales, y="Sales")
+        st.line_chart(selected_sales)
 
 
 # Calculate the overall profit margin across all products
