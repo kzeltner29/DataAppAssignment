@@ -43,8 +43,8 @@ st.write("You selected:", option)
 
 options = st.multiselect(
     "What subcategories would you like to see?",
-    ["Accessories", "Appliances", "Art", "Blue"],
-    ["Yellow", "Red"],
+    ["Accessories", "Appliances", "Art", "Yes"],
+    ["No", "Noo"],
 )
 
 st.write("You selected:", options)
