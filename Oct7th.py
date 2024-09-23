@@ -10,17 +10,6 @@ df = pd.read_csv("Superstore_Sales_utf8.csv", parse_dates=True)
 st.dataframe(df)
 
 
-# Add a drop down for category
-option = st.selectbox(
-    "What category would you like to see?",
-    ("Furniture", "Office Supplies", "Technology"),
-    index=None,
-    placeholder="Select category...",
-)
-
-st.write("You selected:", option)
-
-
 # This bar chart will not have solid bars--but lines--because the detail data is being graphed independently
 st.bar_chart(df, x="Category", y="Sales")
 
@@ -40,6 +29,17 @@ st.dataframe(sales_by_month)
 
 # Here the grouped months are the index and automatically used for the x axis
 st.line_chart(sales_by_month, y="Sales")
+
+# Add a drop down for category
+option = st.selectbox(
+    "What category would you like to see?",
+    ("Furniture", "Office Supplies", "Technology"),
+    index=None,
+    placeholder="Select category...",
+)
+
+st.write("You selected:", option)
+
 
 st.write("## Your additions")
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
