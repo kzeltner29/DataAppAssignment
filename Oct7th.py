@@ -60,7 +60,22 @@ if category != 'Select a Category':
         # Show a line chart for the selected subcategories
         st.write(f"Sales of {', '.join(subcategory)} over time")
         st.line_chart(selected_sales)
-    
+
+# For the selected subcategories show total sales, total profit, overall profit margin
+if category != 'Select a Category':
+    if subcategory:
+        total_sales = filtered_df['Sales'].sum()
+        total_profit = filtered_df['Profit'].sum()
+        if total_sales > 0:
+            profit_margin = (total_profit / total_sales) * 100
+        else:
+            profit_margin = 0
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Total Sales", f"${total_sales:,.2f}")
+        col2.metric("Total Profit", f"${total_profit:,.2f}")
+        col3.metric("Overall Profit Margin", f"{profit_margin:.2f}%")
+
+
 st.write("## Your additions")
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
 st.write("### (2) add a multi-select for Sub_Category *in the selected Category (1)* (https://docs.streamlit.io/library/api-reference/widgets/st.multiselect)")
