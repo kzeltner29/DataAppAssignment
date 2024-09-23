@@ -56,7 +56,7 @@ if subcategory:
     selected_sales = filtered_df.groupby([pd.Grouper(freq='M'), 'Sub_Category'])['Sales'].sum().unstack()
     
     # Show a line chart for the selected subcategories
-    st.write(f"Sales of {.join(subcategory)} over time")
+    st.write(f"Sales of {', '.join(subcategory)} over time")
     st.line_chart(selected_sales)
     
 st.write("## Your additions")
