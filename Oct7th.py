@@ -42,7 +42,7 @@ Categories = {
 category = st.selectbox('Which category are you interested in?', ['Select a Category'] + list(Categories.keys()))
 
 #Add a multi select for Sub Category
-if category != 'Select a Category'
+if category != 'Select a Category':
     subcategory = st.multiselect('Which sub-category are you interested in?:', Categories[category])
      # Show selected options
     st.write(f'You selected {category} with sub-categories: {subcategory}')
