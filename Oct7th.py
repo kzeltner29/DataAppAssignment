@@ -77,11 +77,13 @@ if category != 'Select a Category':
                 profit_margin = (total_profit / total_sales) *100
             else: 
                 profit_margin = 0
-            col1, col2, col3, col4 = st.columns(4)
-            col1.metric(f"{each_subcategory}")
-            col2.metric("Total Sales", f"${total_sales:,.2f}")
-            col3.metric("Total Profit", f"${total_profit:,.2f}")
-            col4.metric("Overall Profit Margin", f"{profit_margin:,.2f}%")
+
+            #Display values
+            st.subheader(f"Metrics for {each_subcategory}")
+            col1, col2, col3 = st.columns(4)
+            col1.metric("Total Sales", f"${total_sales:,.2f}")
+            col2.metric("Total Profit", f"${total_profit:,.2f}")
+            col3.metric("Overall Profit Margin", f"{profit_margin:,.2f}%")
 
 st.write("## Your additions")
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
