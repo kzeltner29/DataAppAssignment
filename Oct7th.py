@@ -47,7 +47,7 @@ if category:
     st.write(f'You selected {category} with sub-categories: {subcategory}')
 
 
-# Show a line chart of sales for the selected items
+# Show a line chart of sales for the selected subcategories
 if subcategory:
     # Filter based on selected subcategories
     filtered_df = df[df['Sub_Category'].isin(subcategory)]
@@ -56,7 +56,7 @@ if subcategory:
     selected_sales = filtered_df.groupby([pd.Grouper(freq='M'), 'Sub_Category'])['Sales'].sum().unstack()
     
     # Show a line chart for the selected subcategories
-    st.write(f"Line chart for {', '.join(filtered_df)}")
+    st.write(f"Line chart for {', '.join(subcategory)}")
     st.line_chart(selected_sales)
     
 st.write("## Your additions")
