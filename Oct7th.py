@@ -48,7 +48,7 @@ if category:
 
 
 # Show a line chart of sales for the selected items
-if selected_subcategories:
+if subcategory:
         # Filter based on selected subcategories
         filtered_df = df[df['Sub_Category'].isin(subcategory)]
 
