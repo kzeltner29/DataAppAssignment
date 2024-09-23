@@ -10,28 +10,15 @@ df = pd.read_csv("Superstore_Sales_utf8.csv", parse_dates=True)
 st.dataframe(df)
 
 
-# Store the initial value of widgets in session state
-if "visibility" not in st.session_state:
-    st.session_state.visibility = "visible"
-    st.session_state.disabled = False
+# Add a drop down for category
+option = st.selectbox(
+    "What category would you like to see?",
+    ("Furniture", "Office Supplies", "Technology"),
+    index=None,
+    placeholder="Select category...",
+)
 
-col1, col2 = st.columns(2)
-
-with col1:
-    st.checkbox("Disable selectbox widget", key="disabled")
-    st.radio(
-        "Set selectbox label visibility 👉",
-        key="visibility",
-        options=["visible", "hidden", "collapsed"],
-    )
-
-with col2:
-    option = st.selectbox(
-        "What category would you like to see",
-        ("Furniture", "Office Supplies", "Technology"),
-        label_visibility=st.session_state.visibility,
-        disabled=st.session_state.disabled,
-    )
+st.write("You selected:", option)
 
 
 # This bar chart will not have solid bars--but lines--because the detail data is being graphed independently
