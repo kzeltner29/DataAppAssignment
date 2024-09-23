@@ -49,16 +49,17 @@ if category != 'Select a Category':
 
 
 # Show a line chart of sales for the selected subcategories
-if subcategory:
-    # Filter based on selected subcategories
-    filtered_df = df[df['Sub_Category'].isin(subcategory)]
+if category != 'Select a Category':
+    if subcategory:
+        # Filter based on selected subcategories
+        filtered_df = df[df['Sub_Category'].isin(subcategory)]
     
-    # Group by month and sum the sales for each subcategory
-    selected_sales = filtered_df.groupby([pd.Grouper(freq='M'), 'Sub_Category'])['Sales'].sum().unstack()
+        # Group by month and sum the sales for each subcategory
+        selected_sales = filtered_df.groupby([pd.Grouper(freq='M'), 'Sub_Category'])['Sales'].sum().unstack()
     
-    # Show a line chart for the selected subcategories
-    st.write(f"Sales of {', '.join(subcategory)} over time")
-    st.line_chart(selected_sales)
+        # Show a line chart for the selected subcategories
+        st.write(f"Sales of {', '.join(subcategory)} over time")
+        st.line_chart(selected_sales)
     
 st.write("## Your additions")
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
