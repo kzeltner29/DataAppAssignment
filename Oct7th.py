@@ -31,7 +31,7 @@ st.dataframe(sales_by_month)
 st.line_chart(sales_by_month, y="Sales")
 
 
-# Categories and their respective sub-categories
+#Add a drop down for Category
 Categories = {
     'Furniture' : ['Bookcases', 'Chairs', 'Furnishings', 'Tables'],
     'Office Supplies' : ['Applicanes', 'Art', 'Binders', 'Envelopes', 'Fasteners', 'Labels', 'Paper', 'Storage', 'Supplies'],
@@ -40,12 +40,25 @@ Categories = {
 
 category = st.selectbox('Which category are you interested in?', list(Categories.keys()))
 
+#Add a multi select for Sub Category
 if category:
     subcategory = st.multiselect('Which sub-category are you interested in?:', Categories[category])
      # Show selected options
     st.write(f'You selected {category} with sub-categories: {subcategory}')
 
 
+# Show a line chart of sales for the selected items
+if selected_subcategories:
+        # Filter based on selected subcategories
+        filtered_df = df[df['Sub_Category'].isin(subcategory)]
+
+        # Group by month and sum the sales for each subcategory
+        selected_sales = filtered_df.set_index('Date').groupby([pd.Grouper(freq='M'), 'Sub_Category'])['Sales'].sum().unstack()
+
+        # Show a line chart for the selected subcategories
+        st.write(f"Line chart for {', '.join(filtered_df)}")
+        st.line_chart(selected_sales)
+    
 st.write("## Your additions")
 st.write("### (1) add a drop down for Category (https://docs.streamlit.io/library/api-reference/widgets/st.selectbox)")
 st.write("### (2) add a multi-select for Sub_Category *in the selected Category (1)* (https://docs.streamlit.io/library/api-reference/widgets/st.multiselect)")
