@@ -65,6 +65,7 @@ if category != 'Select a Category':
 if category != 'Select a Category':
     if subcategory:
         for each_subcategory in subcategory:
+            
             # Filter data for each subcategory
             subcategory_df = filtered_df[filtered_df['Sub_Category'] == each_subcategory]
             
@@ -79,7 +80,8 @@ if category != 'Select a Category':
                 profit_margin = 0
 
             #Display values
-            col1, col2, col3 = st.columns(4)
+            st.subheader(f"Metrics for {each_subcategory}")
+            col1, col2, col3 = st.columns(3)
             col1.metric("Total Sales", f"${total_sales:,.2f}")
             col2.metric("Total Profit", f"${total_profit:,.2f}")
             col3.metric("Overall Profit Margin", f"{profit_margin:,.2f}%")
